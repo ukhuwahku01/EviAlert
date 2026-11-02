@@ -1,0 +1,14 @@
+{
+  "duplicate_pairs_pixel_verified": 53,
+  "duplicate_clusters": 53,
+  "conflicting_label_clusters": 32,
+  "images_removed_conflict": 64,
+  "images_removed_redundant": 21,
+  "n_clean": 1515,
+  "per_class_clean": {
+    "Angry": 378,
+    "Cry": 380,
+    "Laugh": 383,
+    "Normal": 374
+  }
+}

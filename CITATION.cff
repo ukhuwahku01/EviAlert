@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software or these results, please cite it as below."
+title: "EviAlert: evidence-aware alerting with abstention and person-level false-alert guarantees"
+version: 1.0.0
+date-released: 2026-10-30
+license: MIT
+authors:
+  - family-names: Sari, Widowati, Wibowo
+    given-names: Ratih Titi Komala, Widowati, Adi
+    affiliation: Universitas Diponegoro, Universitas Nasional
