@@ -1,0 +1,19 @@
+{
+  "n_images": 1600,
+  "unreadable": 0,
+  "unlabelled": 0,
+  "per_class": {
+    "Angry": 400,
+    "Cry": 400,
+    "Laugh": 400,
+    "Normal": 400
+  },
+  "width_median": 512.0,
+  "height_median": 512.0,
+  "width_min": 372,
+  "width_max": 2312,
+  "dhash_exact_pairs": 54,
+  "dhash_near_pairs": 218,
+  "dhash_near_cross_label_pairs": 93,
+  "images_with_near_dup": 313
+}
