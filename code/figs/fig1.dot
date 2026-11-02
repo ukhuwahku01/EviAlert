@@ -1,0 +1,32 @@
+digraph G {
+  graph [rankdir=TB, newrank=true, splines=ortho, nodesep=0.45, ranksep=0.55, fontname="Liberation Sans", bgcolor="white", pad=0.25, dpi=300];
+  node [fontname="Liberation Sans", fontsize=12, shape=box, style="rounded,filled", fillcolor="#eef3f7", color="#3b5a6e", penwidth=1.3, margin="0.14,0.09", width=2.2];
+  edge [color="#3b5a6e", penwidth=1.2, arrowsize=0.75, fontname="Liberation Sans", fontsize=10.5];
+
+  x  [label="Frame x_t\n(every 5 s)", fillcolor="#ffffff"];
+  f  [label="Base classifier f\n(any backbone) → p_t", fillcolor="#ffffff"];
+  c  [label="(1) Calibration\ntemperature T* → q_t"];
+  e  [label="(2) Evidence ℓ_t\nclipped, prior-corrected\nlog-likelihood ratio"];
+  q  [label="Quality check\n(face visible?)", fillcolor="#ffffff"];
+  a  [label="(3) Abstaining accumulation\nZ_t = sum of ℓ over usable\nframes in the last 30 s"];
+  g  [label="(4) Evidence sufficiency\nusable share ≥ ρ ?"];
+  s  [label="(5) Tiered status\nNo Alert · Watchlist\n· High Alert", fillcolor="#fcf3e0", color="#a67c2e"];
+  ie [label="Insufficient Evidence\n(no alert decision)", fillcolor="#f1f0ec", color="#8a8984"];
+  u  [label="Caregiver checks the child;\nmark as checked / snooze\n(refractory R)", fillcolor="#e6f0e8", color="#4a7a52"];
+  cal [label="(6) Offline threshold calibration on held-out identities:\nidentity-bootstrap bound on false alerts per hour ≤ budget β\n→ h_H (High Alert), h_W = h_H / 2", style="rounded,dashed", fillcolor="#ffffff", color="#8a8984", width=5];
+
+  {rank=same; x; f; c; e;}
+  {rank=same; q; a; g;}
+  {rank=same; ie; s; u;}
+  x -> f -> c -> e;
+  e -> a;
+  x -> q [style=dashed];
+  q -> a [style=dashed, xlabel="unusable → no update "];
+  a -> g;
+  g -> s [xlabel="yes "];
+  g -> ie [xlabel="no "];
+  s -> u;
+  cal -> s [style=dashed];
+  {rank=same; cal;}
+  u -> cal [style=invis];
+}

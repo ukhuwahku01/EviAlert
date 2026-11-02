@@ -1,0 +1,196 @@
+TABLE frame
+| Backbone | Accuracy | Macro-F1 | AUROC (distress) | T* | ECE raw | ECE cal | NLL raw | NLL cal |
+| ResNet-50 | .592 | .594 | .783 | 1.39 | .096 | .042 | 1.023 | 0.990 |
+| ViT-B/16 | .610 | .609 | .798 | 1.21 | .065 | .048 | 0.953 | 0.946 |
+| ConvNeXt-T | .642 | .641 | .813 | 1.17 | .071 | .051 | 0.914 | 0.907 |
+| Swin-T | .592 | .590 | .786 | 1.38 | .110 | .048 | 1.006 | 0.973 |
+| EfficientNet-B0 | .473 | .476 | .696 | 3.62 | .300 | .043 | 1.774 | 1.198 |
+TABLE recall
+| ResNet-50 | Frame | .232 (.155) | .277 (.148) | .446 (.116) | 36.5 |
+| ResNet-50 | MajVote | .000 (.000) | .000 (.000) | .000 (.000) | 31.9 |
+| ResNet-50 | MovAvg | .248 (.045) | .339 (.058) | .486 (.058) | 40.8 |
+| ResNet-50 | SelMovAvg | .158 (.103) | .314 (.088) | .425 (.052) | 44.9 |
+| ResNet-50 | MovAvg-Cal | .255 (.051) | .349 (.058) | .492 (.056) | 39.1 |
+| ResNet-50 | EviAlert-C | .224 (.064) | .388 (.059) | .527 (.048) | 58.2 |
+| ResNet-50 | EviAlert-W | .320 (.049) | .400 (.054) | .529 (.046) | 36.2 |
+| ViT-B/16 | Frame | .504 (.060) | .514 (.068) | .550 (.089) | 17.5 |
+| ViT-B/16 | MajVote | .000 (.000) | .000 (.000) | .000 (.000) | 32.9 |
+| ViT-B/16 | MovAvg | .336 (.058) | .426 (.059) | .528 (.059) | 33.4 |
+| ViT-B/16 | SelMovAvg | .366 (.069) | .436 (.066) | .531 (.074) | 32.2 |
+| ViT-B/16 | MovAvg-Cal | .349 (.055) | .435 (.064) | .536 (.058) | 31.8 |
+| ViT-B/16 | EviAlert-C | .353 (.062) | .466 (.057) | .565 (.049) | 42.0 |
+| ViT-B/16 | EviAlert-W | .394 (.055) | .488 (.055) | .579 (.054) | 27.0 |
+| ConvNeXt-T | Frame | .346 (.107) | .440 (.079) | .522 (.114) | 22.2 |
+| ConvNeXt-T | MajVote | .000 (.000) | .000 (.000) | .000 (.000) | 31.6 |
+| ConvNeXt-T | MovAvg | .377 (.064) | .469 (.048) | .572 (.055) | 32.1 |
+| ConvNeXt-T | SelMovAvg | .296 (.093) | .386 (.103) | .569 (.050) | 36.2 |
+| ConvNeXt-T | MovAvg-Cal | .380 (.061) | .471 (.048) | .573 (.056) | 30.8 |
+| ConvNeXt-T | EviAlert-C | .369 (.056) | .485 (.050) | .590 (.053) | 41.1 |
+| ConvNeXt-T | EviAlert-W | .434 (.055) | .512 (.049) | .611 (.050) | 27.4 |
+| Swin-T | Frame | .255 (.213) | .448 (.149) | .553 (.073) | 25.4 |
+| Swin-T | MajVote | .000 (.000) | .000 (.000) | .000 (.000) | 34.4 |
+| Swin-T | MovAvg | .334 (.062) | .432 (.053) | .528 (.057) | 36.6 |
+| Swin-T | SelMovAvg | .309 (.095) | .413 (.073) | .541 (.073) | 35.0 |
+| Swin-T | MovAvg-Cal | .341 (.076) | .434 (.057) | .538 (.060) | 33.5 |
+| Swin-T | EviAlert-C | .361 (.062) | .464 (.059) | .568 (.053) | 39.4 |
+| Swin-T | EviAlert-W | .390 (.069) | .481 (.054) | .570 (.055) | 30.0 |
+| EfficientNet-B0 | Frame | .000 (.000) | .000 (.000) | .133 (.204) | 28.0 |
+| EfficientNet-B0 | MajVote | .000 (.000) | .000 (.000) | .000 (.000) | 42.5 |
+| EfficientNet-B0 | MovAvg | .110 (.037) | .145 (.046) | .329 (.046) | 51.1 |
+| EfficientNet-B0 | SelMovAvg | .022 (.067) | .149 (.125) | .251 (.030) | 47.0 |
+| EfficientNet-B0 | MovAvg-Cal | .173 (.051) | .248 (.031) | .361 (.033) | 46.5 |
+| EfficientNet-B0 | EviAlert-C | .199 (.037) | .302 (.036) | .395 (.037) | 50.1 |
+| EfficientNet-B0 | EviAlert-W | .219 (.044) | .302 (.036) | .409 (.039) | 44.2 |
+TABLE tests
+ResNet-50 {"recall@0.5": ["MovAvg-Cal", 0.066, 20, 0, "1.9e-06"], "recall@1.0": ["MovAvg-Cal", 0.052, 20, 0, "1.9e-06"], "recall@2.0": ["MovAvg-Cal", 0.037, 17, 1, "0.00034"]}
+ViT-B/16 {"recall@0.5": ["Frame", -0.11, 0, 0, "1.9e-06"], "recall@1.0": ["Frame", -0.026, 6, 0, "0.048"], "recall@2.0": ["Frame", 0.029, 14, 0, "0.083"]}
+ConvNeXt-T {"recall@0.5": ["MovAvg-Cal", 0.053, 19, 1, "0.00013"], "recall@1.0": ["MovAvg-Cal", 0.041, 20, 0, "1.9e-06"], "recall@2.0": ["MovAvg-Cal", 0.039, 19, 0, "5.7e-06"]}
+Swin-T {"recall@0.5": ["MovAvg-Cal", 0.049, 19, 1, "0.00013"], "recall@1.0": ["Frame", 0.033, 9, 0, "0.81"], "recall@2.0": ["Frame", 0.017, 12, 1, "0.21"]}
+EfficientNet-B0 {"recall@0.5": ["MovAvg-Cal", 0.046, 19, 0, "3.8e-06"], "recall@1.0": ["MovAvg-Cal", 0.054, 20, 0, "8.8e-05"], "recall@2.0": ["MovAvg-Cal", 0.048, 18, 0, "1.9e-05"]}
+{"recall@0.5": {"diff": 0.020756372045968786, "wins": 77, "ties": 2, "p": 0.0008544705354285378}, "recall@1.0": {"diff": 0.030666244500935903, "wins": 75, "ties": 0, "p": 8.313629909945213e-05}, "recall@2.0": {"diff": 0.03387023323382263, "wins": 80, "ties": 2, "p": 4.570139265923046e-10}, "recall@0.5_vs_MovAvgCal": {"diff": 0.051842894706584104, "rel": 0.1730814544903115, "wins": 97, "p": 8.58637542655917e-18}, "recall@1.0_vs_MovAvgCal": {"diff": 0.04935935369630878, "rel": 0.1274586384358605, "wins": 99, "p": 4.012987511347891e-18}, "recall@2.0_vs_MovAvgCal": {"diff": 0.03963975277290708, "rel": 0.07928420107465374, "wins": 92, "p": 8.991981233043472e-17}}
+TABLE deployed (gboot) + compliance
+| ResNet-50 | MovAvg | naive 0.90 | pois 0.95 | gboot 0.95 feas 1.00 | FA 0.38 | rec .251 | stale 23.60 | ie 0.000 | naiveFA 0.74 poisFA 0.60
+| ResNet-50 | MovAvg-Cal | naive 0.80 | pois 0.90 | gboot 0.95 feas 1.00 | FA 0.39 | rec .244 | stale 22.35 | ie 0.000 | naiveFA 0.78 poisFA 0.61
+| ResNet-50 | SelMovAvg | naive 0.70 | pois 0.75 | gboot 0.95 feas 1.00 | FA 0.27 | rec .103 | stale 5.80 | ie 0.000 | naiveFA 0.77 poisFA 0.57
+| ResNet-50 | EviAlert-C | naive 0.70 | pois 0.85 | gboot 0.95 feas 1.00 | FA 0.48 | rec .224 | stale 1.00 | ie 0.066 | naiveFA 0.86 poisFA 0.71
+| ResNet-50 | EviAlert-W | naive 0.70 | pois 0.95 | gboot 0.95 feas 1.00 | FA 0.41 | rec .298 | stale 0.80 | ie 0.066 | naiveFA 0.84 poisFA 0.64
+| ViT-B/16 | MovAvg | naive 0.80 | pois 0.90 | gboot 1.00 feas 1.00 | FA 0.38 | rec .323 | stale 25.90 | ie 0.000 | naiveFA 0.71 poisFA 0.52
+| ViT-B/16 | MovAvg-Cal | naive 0.75 | pois 0.90 | gboot 1.00 feas 1.00 | FA 0.41 | rec .347 | stale 27.30 | ie 0.000 | naiveFA 0.73 poisFA 0.54
+| ViT-B/16 | SelMovAvg | naive 0.70 | pois 0.75 | gboot 0.85 feas 1.00 | FA 0.35 | rec .354 | stale 12.85 | ie 0.000 | naiveFA 0.74 poisFA 0.55
+| ViT-B/16 | EviAlert-C | naive 0.75 | pois 0.95 | gboot 1.00 feas 1.00 | FA 0.43 | rec .342 | stale 0.95 | ie 0.066 | naiveFA 0.81 poisFA 0.65
+| ViT-B/16 | EviAlert-W | naive 0.75 | pois 0.85 | gboot 0.95 feas 1.00 | FA 0.44 | rec .382 | stale 1.25 | ie 0.066 | naiveFA 0.82 poisFA 0.66
+| ConvNeXt-T | MovAvg | naive 0.65 | pois 0.80 | gboot 0.90 feas 1.00 | FA 0.52 | rec .386 | stale 34.35 | ie 0.000 | naiveFA 0.91 poisFA 0.71
+| ConvNeXt-T | MovAvg-Cal | naive 0.55 | pois 0.80 | gboot 0.90 feas 1.00 | FA 0.53 | rec .389 | stale 33.80 | ie 0.000 | naiveFA 0.97 poisFA 0.68
+| ConvNeXt-T | SelMovAvg | naive 0.55 | pois 0.70 | gboot 0.85 feas 1.00 | FA 0.32 | rec .294 | stale 12.15 | ie 0.000 | naiveFA 0.94 poisFA 0.61
+| ConvNeXt-T | EviAlert-C | naive 0.55 | pois 0.75 | gboot 0.95 feas 1.00 | FA 0.50 | rec .368 | stale 1.90 | ie 0.066 | naiveFA 0.95 poisFA 0.73
+| ConvNeXt-T | EviAlert-W | naive 0.50 | pois 0.80 | gboot 0.90 feas 1.00 | FA 0.55 | rec .436 | stale 1.60 | ie 0.066 | naiveFA 0.97 poisFA 0.75
+| Swin-T | MovAvg | naive 0.45 | pois 0.65 | gboot 0.95 feas 1.00 | FA 0.53 | rec .345 | stale 32.20 | ie 0.000 | naiveFA 1.07 poisFA 0.85
+| Swin-T | MovAvg-Cal | naive 0.50 | pois 0.60 | gboot 0.90 feas 1.00 | FA 0.52 | rec .344 | stale 30.00 | ie 0.000 | naiveFA 1.04 poisFA 0.84
+| Swin-T | SelMovAvg | naive 0.50 | pois 0.70 | gboot 0.90 feas 1.00 | FA 0.42 | rec .245 | stale 10.35 | ie 0.000 | naiveFA 1.08 poisFA 0.72
+| Swin-T | EviAlert-C | naive 0.60 | pois 0.65 | gboot 0.85 feas 1.00 | FA 0.59 | rec .375 | stale 2.00 | ie 0.066 | naiveFA 1.01 poisFA 0.82
+| Swin-T | EviAlert-W | naive 0.50 | pois 0.60 | gboot 0.75 feas 1.00 | FA 0.62 | rec .409 | stale 2.05 | ie 0.066 | naiveFA 1.06 poisFA 0.85
+| EfficientNet-B0 | MovAvg | naive 0.70 | pois 0.90 | gboot 1.00 feas 0.95 | FA 0.30 | rec .116 | stale 15.40 | ie 0.000 | naiveFA 0.61 poisFA 0.40
+| EfficientNet-B0 | MovAvg-Cal | naive 0.45 | pois 0.70 | gboot 0.90 feas 1.00 | FA 0.54 | rec .196 | stale 26.20 | ie 0.000 | naiveFA 0.92 poisFA 0.73
+| EfficientNet-B0 | SelMovAvg | naive 0.60 | pois 0.60 | gboot 0.60 feas 0.15 | FA 0.89 | rec .251 | stale 16.70 | ie 0.000 | naiveFA 0.89 poisFA 0.89
+| EfficientNet-B0 | EviAlert-C | naive 0.55 | pois 0.70 | gboot 1.00 feas 1.00 | FA 0.54 | rec .204 | stale 1.40 | ie 0.066 | naiveFA 1.04 poisFA 0.84
+| EfficientNet-B0 | EviAlert-W | naive 0.60 | pois 0.70 | gboot 0.90 feas 1.00 | FA 0.58 | rec .237 | stale 1.00 | ie 0.066 | naiveFA 1.00 poisFA 0.79
+Frame ResNet-50 gboot feas 1.00 comp 0.75 naive feas 1.00
+Frame ViT-B/16 gboot feas 1.00 comp 1.00 naive feas 1.00
+Frame ConvNeXt-T gboot feas 1.00 comp 0.95 naive feas 1.00
+Frame Swin-T gboot feas 1.00 comp 0.85 naive feas 1.00
+Frame EfficientNet-B0 gboot feas 0.00 comp 0.00 naive feas 0.05
+MajVote ResNet-50 gboot feas 0.00 comp 0.00 naive feas 0.00
+MajVote ViT-B/16 gboot feas 0.00 comp 0.00 naive feas 0.00
+MajVote ConvNeXt-T gboot feas 0.00 comp 0.00 naive feas 0.00
+MajVote Swin-T gboot feas 0.00 comp 0.00 naive feas 0.00
+MajVote EfficientNet-B0 gboot feas 0.00 comp 0.00 naive feas 0.00
+POOLED compliance/stale/FA/recall (gboot)
+Frame: naive 0.660 pois 0.680 gboot 0.710 | FA 0.817 rec 0.326 stale 0.99 staleOr 1.24 ie 0.000 feas 0.80
+MajVote: naive 0.000 pois 0.000 gboot 0.000 | FA 9.070 rec 0.711 stale 263.56 staleOr 263.56 ie 0.000 feas 0.00
+MovAvg: naive 0.700 pois 0.840 gboot 0.960 | FA 0.424 rec 0.284 stale 26.29 staleOr 39.86 ie 0.000 feas 0.99
+SelMovAvg: naive 0.610 pois 0.700 gboot 0.830 | FA 0.451 rec 0.249 stale 11.57 staleOr 17.00 ie 0.000 feas 0.83
+MovAvg-Cal: naive 0.610 pois 0.780 gboot 0.930 | FA 0.476 rec 0.304 stale 27.93 staleOr 41.48 ie 0.000 feas 1.00
+EviAlert-C: naive 0.630 pois 0.780 gboot 0.950 | FA 0.508 rec 0.303 stale 1.45 staleOr 3.45 ie 0.066 feas 1.00
+EviAlert-W: naive 0.610 pois 0.780 gboot 0.890 | FA 0.518 rec 0.353 stale 1.34 staleOr 2.52 ie 0.066 feas 1.00
+EviAlert-W-noCal: naive 0.550 pois 0.730 gboot 0.860 | FA 0.605 rec 0.339 stale 0.99 staleOr 2.00 ie 0.066 feas 0.81
+EviAlert-W-noClip: naive 0.630 pois 0.770 gboot 0.900 | FA 0.518 rec 0.355 stale 1.33 staleOr 2.49 ie 0.066 feas 1.00
+EviAlert-W-noGate: naive 0.580 pois 0.780 gboot 0.900 | FA 0.534 rec 0.345 stale 30.08 staleOr 44.46 ie 0.000 feas 1.00
+TABLE ablation
+| ResNet-50 | EviAlert-W | .320 | .400 | .529 | 36.2 | staleOr 1.45 | gstale 0.80 | gfeas 1.00 | gcomp 0.95
+| ResNet-50 | EviAlert-W-noCal | .292 | .393 | .523 | 37.9 | staleOr 1.05 | gstale 0.35 | gfeas 1.00 | gcomp 1.00
+| ResNet-50 | EviAlert-W-noClip | .322 | .404 | .529 | 35.9 | staleOr 1.55 | gstale 0.80 | gfeas 1.00 | gcomp 0.95
+| ResNet-50 | EviAlert-W-noGate | .304 | .398 | .528 | 35.6 | staleOr 40.90 | gstale 24.50 | gfeas 1.00 | gcomp 0.95
+| ViT-B/16 | EviAlert-W | .394 | .488 | .579 | 27.0 | staleOr 3.05 | gstale 1.25 | gfeas 1.00 | gcomp 0.95
+| ViT-B/16 | EviAlert-W-noCal | .380 | .476 | .575 | 27.6 | staleOr 2.75 | gstale 1.20 | gfeas 1.00 | gcomp 0.95
+| ViT-B/16 | EviAlert-W-noClip | .395 | .490 | .580 | 27.0 | staleOr 2.90 | gstale 1.30 | gfeas 1.00 | gcomp 0.95
+| ViT-B/16 | EviAlert-W-noGate | .395 | .473 | .572 | 28.8 | staleOr 44.95 | gstale 29.80 | gfeas 1.00 | gcomp 0.95
+| ConvNeXt-T | EviAlert-W | .434 | .512 | .611 | 27.4 | staleOr 3.20 | gstale 1.60 | gfeas 1.00 | gcomp 0.90
+| ConvNeXt-T | EviAlert-W-noCal | .431 | .511 | .614 | 28.0 | staleOr 3.05 | gstale 1.60 | gfeas 1.00 | gcomp 0.90
+| ConvNeXt-T | EviAlert-W-noClip | .435 | .512 | .612 | 27.4 | staleOr 3.10 | gstale 1.60 | gfeas 1.00 | gcomp 0.90
+| ConvNeXt-T | EviAlert-W-noGate | .427 | .512 | .605 | 28.0 | staleOr 50.00 | gstale 35.90 | gfeas 1.00 | gcomp 0.90
+| Swin-T | EviAlert-W | .390 | .481 | .570 | 30.0 | staleOr 3.50 | gstale 2.05 | gfeas 1.00 | gcomp 0.75
+| Swin-T | EviAlert-W-noCal | .385 | .471 | .569 | 30.8 | staleOr 3.15 | gstale 1.80 | gfeas 1.00 | gcomp 0.80
+| Swin-T | EviAlert-W-noClip | .393 | .483 | .573 | 30.0 | staleOr 3.50 | gstale 1.95 | gfeas 1.00 | gcomp 0.80
+| Swin-T | EviAlert-W-noGate | .381 | .474 | .567 | 31.4 | staleOr 45.45 | gstale 31.80 | gfeas 1.00 | gcomp 0.90
+| EfficientNet-B0 | EviAlert-W | .219 | .302 | .409 | 44.2 | staleOr 1.40 | gstale 1.00 | gfeas 1.00 | gcomp 0.90
+| EfficientNet-B0 | EviAlert-W-noCal | .000 | .157 | .367 | 51.9 | staleOr 0.00 | gstale 0.00 | gfeas 0.05 | gcomp 0.65
+| EfficientNet-B0 | EviAlert-W-noClip | .221 | .303 | .409 | 44.2 | staleOr 1.40 | gstale 1.00 | gfeas 1.00 | gcomp 0.90
+| EfficientNet-B0 | EviAlert-W-noGate | .215 | .290 | .396 | 44.9 | staleOr 41.00 | gstale 28.40 | gfeas 1.00 | gcomp 0.80
+LEAD
+ResNet-50 lead 15.4 watch 0.044
+ViT-B/16 lead 11.1 watch 0.034
+ConvNeXt-T lead 10.6 watch 0.035
+Swin-T lead 10.2 watch 0.026
+EfficientNet-B0 lead 12.5 watch 0.034
+META {"resnet50": {"distress_time_share": 0.06089305555555556, "missing_share": 0.09993240740740741, "events_per_hour": 1.7793333333333337, "same_identity_share": 0.31355331190976266, "n_cal_img": 770.95, "n_eval_img": 744.05}, "vit_b16": {"distress_time_share": 0.06089305555555556, "missing_share": 0.09993240740740741, "events_per_hour": 1.7793333333333337, "same_identity_share": 0.31355331190976266, "n_cal_img": 770.95, "n_eval_img": 744.05}, "convnext_t": {"distress_time_share": 0.06089305555555556, "missing_share": 0.09993240740740741, "events_per_hour": 1.7793333333333337, "same_identity_share": 0.31355331190976266, "n_cal_img": 770.95, "n_eval_img": 744.05}, "swin_t": {"distress_time_share": 0.06089305555555556, "missing_share": 0.09993240740740741, "events_per_hour": 1.7793333333333337, "same_identity_share": 0.31355331190976266, "n_cal_img": 770.95, "n_eval_img": 744.05}, "effnet_b0": {"distress_time_share": 0.06089305555555556, "missing_share": 0.09993240740740741, "events_per_hour": 1.7793333333333337, "same_identity_share": 0.31355331190976266, "n_cal_img": 770.95, "n_eval_img": 744.05}}
+ROBUST missing
+resnet50|0.0 MovAvg: R@.5 0.245 R@1 0.354 R@2 0.496 gstale 0.00 gcomp 0.90 gFA 0.53 grec 0.263 ie 0.000 n=10
+resnet50|0.0 MovAvg-Cal: R@.5 0.261 R@1 0.363 R@2 0.494 gstale 0.00 gcomp 0.90 gFA 0.63 grec 0.302 ie 0.000 n=10
+resnet50|0.0 EviAlert-W: R@.5 0.320 R@1 0.411 R@2 0.527 gstale 0.00 gcomp 0.90 gFA 0.62 grec 0.336 ie 0.000 n=10
+resnet50|0.0 EviAlert-W-noGate: R@.5 0.320 R@1 0.411 R@2 0.527 gstale 0.00 gcomp 0.90 gFA 0.62 grec 0.336 ie 0.000 n=10
+resnet50|0.1 MovAvg: R@.5 0.234 R@1 0.326 R@2 0.488 gstale 27.50 gcomp 0.90 gFA 0.50 grec 0.229 ie 0.000 n=10
+resnet50|0.1 MovAvg-Cal: R@.5 0.256 R@1 0.346 R@2 0.483 gstale 26.40 gcomp 0.90 gFA 0.53 grec 0.254 ie 0.000 n=10
+resnet50|0.1 EviAlert-W: R@.5 0.304 R@1 0.398 R@2 0.520 gstale 0.40 gcomp 0.90 gFA 0.51 grec 0.299 ie 0.066 n=10
+resnet50|0.1 EviAlert-W-noGate: R@.5 0.301 R@1 0.394 R@2 0.513 gstale 27.10 gcomp 0.80 gFA 0.56 grec 0.301 ie 0.000 n=10
+resnet50|0.2 MovAvg: R@.5 0.232 R@1 0.319 R@2 0.451 gstale 51.40 gcomp 0.90 gFA 0.55 grec 0.235 ie 0.000 n=10
+resnet50|0.2 MovAvg-Cal: R@.5 0.241 R@1 0.329 R@2 0.460 gstale 51.80 gcomp 0.90 gFA 0.58 grec 0.243 ie 0.000 n=10
+resnet50|0.2 EviAlert-W: R@.5 0.285 R@1 0.391 R@2 0.504 gstale 1.40 gcomp 0.90 gFA 0.55 grec 0.297 ie 0.137 n=10
+resnet50|0.2 EviAlert-W-noGate: R@.5 0.288 R@1 0.374 R@2 0.491 gstale 55.30 gcomp 0.80 gFA 0.61 grec 0.287 ie 0.000 n=10
+resnet50|0.3 MovAvg: R@.5 0.234 R@1 0.322 R@2 0.434 gstale 75.90 gcomp 0.80 gFA 0.61 grec 0.232 ie 0.000 n=10
+resnet50|0.3 MovAvg-Cal: R@.5 0.243 R@1 0.315 R@2 0.436 gstale 75.40 gcomp 0.80 gFA 0.61 grec 0.232 ie 0.000 n=10
+resnet50|0.3 EviAlert-W: R@.5 0.272 R@1 0.373 R@2 0.490 gstale 3.20 gcomp 0.90 gFA 0.61 grec 0.290 ie 0.216 n=10
+resnet50|0.3 EviAlert-W-noGate: R@.5 0.278 R@1 0.358 R@2 0.479 gstale 77.70 gcomp 0.80 gFA 0.64 grec 0.268 ie 0.000 n=10
+convnext_t|0.0 MovAvg: R@.5 0.425 R@1 0.495 R@2 0.624 gstale 0.00 gcomp 0.90 gFA 0.52 grec 0.412 ie 0.000 n=10
+convnext_t|0.0 MovAvg-Cal: R@.5 0.421 R@1 0.499 R@2 0.620 gstale 0.00 gcomp 0.80 gFA 0.55 grec 0.407 ie 0.000 n=10
+convnext_t|0.0 EviAlert-W: R@.5 0.463 R@1 0.548 R@2 0.645 gstale 0.00 gcomp 0.80 gFA 0.61 grec 0.468 ie 0.000 n=10
+convnext_t|0.0 EviAlert-W-noGate: R@.5 0.463 R@1 0.548 R@2 0.645 gstale 0.00 gcomp 0.80 gFA 0.61 grec 0.468 ie 0.000 n=10
+convnext_t|0.1 MovAvg: R@.5 0.387 R@1 0.478 R@2 0.568 gstale 40.90 gcomp 0.90 gFA 0.63 grec 0.418 ie 0.000 n=10
+convnext_t|0.1 MovAvg-Cal: R@.5 0.379 R@1 0.481 R@2 0.578 gstale 42.40 gcomp 0.80 gFA 0.70 grec 0.422 ie 0.000 n=10
+convnext_t|0.1 EviAlert-W: R@.5 0.436 R@1 0.520 R@2 0.627 gstale 2.70 gcomp 0.80 gFA 0.75 grec 0.469 ie 0.066 n=10
+convnext_t|0.1 EviAlert-W-noGate: R@.5 0.422 R@1 0.516 R@2 0.608 gstale 43.40 gcomp 0.80 gFA 0.77 grec 0.470 ie 0.000 n=10
+convnext_t|0.2 MovAvg: R@.5 0.347 R@1 0.454 R@2 0.555 gstale 77.00 gcomp 0.70 gFA 0.70 grec 0.403 ie 0.000 n=10
+convnext_t|0.2 MovAvg-Cal: R@.5 0.362 R@1 0.460 R@2 0.551 gstale 78.30 gcomp 0.70 gFA 0.75 grec 0.412 ie 0.000 n=10
+convnext_t|0.2 EviAlert-W: R@.5 0.423 R@1 0.500 R@2 0.609 gstale 5.50 gcomp 0.80 gFA 0.74 grec 0.453 ie 0.137 n=10
+convnext_t|0.2 EviAlert-W-noGate: R@.5 0.408 R@1 0.502 R@2 0.587 gstale 81.80 gcomp 0.70 gFA 0.81 grec 0.446 ie 0.000 n=10
+convnext_t|0.3 MovAvg: R@.5 0.346 R@1 0.444 R@2 0.540 gstale 103.80 gcomp 0.70 gFA 0.71 grec 0.393 ie 0.000 n=10
+convnext_t|0.3 MovAvg-Cal: R@.5 0.352 R@1 0.450 R@2 0.538 gstale 105.00 gcomp 0.70 gFA 0.76 grec 0.399 ie 0.000 n=10
+convnext_t|0.3 EviAlert-W: R@.5 0.400 R@1 0.481 R@2 0.593 gstale 7.00 gcomp 0.90 gFA 0.71 grec 0.433 ie 0.216 n=10
+convnext_t|0.3 EviAlert-W-noGate: R@.5 0.400 R@1 0.497 R@2 0.573 gstale 112.80 gcomp 0.70 gFA 0.82 grec 0.429 ie 0.000 n=10
+ROBUST persist
+resnet50|1.0 MovAvg: R@.5 0.234 R@1 0.371 R@2 0.514 gstale 40.70 gcomp 0.90 gFA 0.58 grec 0.243 ie 0.000 n=10
+resnet50|1.0 MovAvg-Cal: R@.5 0.245 R@1 0.389 R@2 0.539 gstale 41.60 gcomp 0.90 gFA 0.61 grec 0.282 ie 0.000 n=10
+resnet50|1.0 EviAlert-W: R@.5 0.373 R@1 0.500 R@2 0.632 gstale 1.20 gcomp 0.90 gFA 0.66 grec 0.416 ie 0.066 n=10
+resnet50|1.0 EviAlert-W-noGate: R@.5 0.339 R@1 0.455 R@2 0.598 gstale 52.50 gcomp 0.90 gFA 0.70 grec 0.384 ie 0.000 n=10
+resnet50|2.0 MovAvg: R@.5 0.234 R@1 0.326 R@2 0.488 gstale 27.50 gcomp 0.90 gFA 0.50 grec 0.229 ie 0.000 n=10
+resnet50|2.0 MovAvg-Cal: R@.5 0.256 R@1 0.346 R@2 0.483 gstale 26.40 gcomp 0.90 gFA 0.53 grec 0.254 ie 0.000 n=10
+resnet50|2.0 EviAlert-W: R@.5 0.304 R@1 0.398 R@2 0.520 gstale 0.40 gcomp 0.90 gFA 0.51 grec 0.299 ie 0.066 n=10
+resnet50|2.0 EviAlert-W-noGate: R@.5 0.301 R@1 0.394 R@2 0.513 gstale 27.10 gcomp 0.80 gFA 0.56 grec 0.301 ie 0.000 n=10
+resnet50|4.0 MovAvg: R@.5 0.223 R@1 0.309 R@2 0.428 gstale 17.60 gcomp 0.90 gFA 0.53 grec 0.238 ie 0.000 n=10
+resnet50|4.0 MovAvg-Cal: R@.5 0.219 R@1 0.311 R@2 0.416 gstale 18.90 gcomp 0.90 gFA 0.59 grec 0.254 ie 0.000 n=10
+resnet50|4.0 EviAlert-W: R@.5 0.256 R@1 0.342 R@2 0.437 gstale 0.80 gcomp 0.80 gFA 0.68 grec 0.282 ie 0.065 n=10
+resnet50|4.0 EviAlert-W-noGate: R@.5 0.236 R@1 0.344 R@2 0.441 gstale 18.20 gcomp 0.90 gFA 0.61 grec 0.272 ie 0.000 n=10
+convnext_t|1.0 MovAvg: R@.5 0.393 R@1 0.498 R@2 0.629 gstale 46.60 gcomp 0.90 gFA 0.51 grec 0.388 ie 0.000 n=10
+convnext_t|1.0 MovAvg-Cal: R@.5 0.410 R@1 0.496 R@2 0.628 gstale 45.60 gcomp 0.90 gFA 0.53 grec 0.398 ie 0.000 n=10
+convnext_t|1.0 EviAlert-W: R@.5 0.498 R@1 0.602 R@2 0.729 gstale 3.20 gcomp 0.90 gFA 0.47 grec 0.470 ie 0.066 n=10
+convnext_t|1.0 EviAlert-W-noGate: R@.5 0.475 R@1 0.565 R@2 0.699 gstale 54.70 gcomp 0.90 gFA 0.58 grec 0.473 ie 0.000 n=10
+convnext_t|2.0 MovAvg: R@.5 0.387 R@1 0.478 R@2 0.568 gstale 40.90 gcomp 0.90 gFA 0.63 grec 0.418 ie 0.000 n=10
+convnext_t|2.0 MovAvg-Cal: R@.5 0.379 R@1 0.481 R@2 0.578 gstale 42.40 gcomp 0.80 gFA 0.70 grec 0.422 ie 0.000 n=10
+convnext_t|2.0 EviAlert-W: R@.5 0.436 R@1 0.520 R@2 0.627 gstale 2.70 gcomp 0.80 gFA 0.75 grec 0.469 ie 0.066 n=10
+convnext_t|2.0 EviAlert-W-noGate: R@.5 0.422 R@1 0.516 R@2 0.608 gstale 43.40 gcomp 0.80 gFA 0.77 grec 0.470 ie 0.000 n=10
+convnext_t|4.0 MovAvg: R@.5 0.331 R@1 0.448 R@2 0.537 gstale 27.80 gcomp 0.80 gFA 0.70 grec 0.374 ie 0.000 n=10
+convnext_t|4.0 MovAvg-Cal: R@.5 0.350 R@1 0.449 R@2 0.534 gstale 27.70 gcomp 0.70 gFA 0.72 grec 0.366 ie 0.000 n=10
+convnext_t|4.0 EviAlert-W: R@.5 0.380 R@1 0.478 R@2 0.563 gstale 2.30 gcomp 0.70 gFA 0.78 grec 0.416 ie 0.065 n=10
+convnext_t|4.0 EviAlert-W-noGate: R@.5 0.384 R@1 0.479 R@2 0.564 gstale 27.80 gcomp 0.70 gFA 0.77 grec 0.405 ie 0.000 n=10
+ROBUST budget
+resnet50|0.5 MovAvg: R@.5 0.248 R@1 0.339 R@2 0.486 gstale 10.00 gcomp 1.00 gFA 0.15 grec 0.097 ie 0.000 n=20
+resnet50|0.5 MovAvg-Cal: R@.5 0.255 R@1 0.349 R@2 0.492 gstale 10.05 gcomp 1.00 gFA 0.16 grec 0.105 ie 0.000 n=20
+resnet50|0.5 EviAlert-W: R@.5 0.320 R@1 0.400 R@2 0.529 gstale 0.25 gcomp 0.95 gFA 0.19 grec 0.158 ie 0.066 n=20
+resnet50|2.0 MovAvg: R@.5 0.248 R@1 0.339 R@2 0.486 gstale 45.10 gcomp 1.00 gFA 0.98 grec 0.356 ie 0.000 n=20
+resnet50|2.0 MovAvg-Cal: R@.5 0.255 R@1 0.349 R@2 0.492 gstale 41.45 gcomp 1.00 gFA 0.93 grec 0.358 ie 0.000 n=20
+resnet50|2.0 EviAlert-W: R@.5 0.320 R@1 0.400 R@2 0.529 gstale 1.35 gcomp 1.00 gFA 1.03 grec 0.407 ie 0.066 n=20
+convnext_t|0.5 MovAvg: R@.5 0.377 R@1 0.469 R@2 0.572 gstale 21.60 gcomp 0.85 gFA 0.23 grec 0.256 ie 0.000 n=20
+convnext_t|0.5 MovAvg-Cal: R@.5 0.380 R@1 0.471 R@2 0.573 gstale 21.35 gcomp 0.85 gFA 0.23 grec 0.266 ie 0.000 n=20
+convnext_t|0.5 EviAlert-W: R@.5 0.434 R@1 0.512 R@2 0.611 gstale 0.60 gcomp 0.90 gFA 0.28 grec 0.340 ie 0.066 n=20
+convnext_t|2.0 MovAvg: R@.5 0.377 R@1 0.469 R@2 0.572 gstale 55.30 gcomp 0.90 gFA 1.19 grec 0.488 ie 0.000 n=20
+convnext_t|2.0 MovAvg-Cal: R@.5 0.380 R@1 0.471 R@2 0.573 gstale 54.25 gcomp 0.90 gFA 1.20 grec 0.499 ie 0.000 n=20
+convnext_t|2.0 EviAlert-W: R@.5 0.434 R@1 0.512 R@2 0.611 gstale 3.60 gcomp 0.90 gFA 1.26 grec 0.536 ie 0.066 n=20
